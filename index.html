@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- MEZBAN-V5-2026-11-02 -->
+<!-- MEZBAN-V6-2026-11-03 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Restaurant","name":"Mezban Kolkata Biryani","slogan":"The Authentic Taste of Kolkata","url":"https://kryan21.github.io/mezban-kolkata-biryani/","image":"https://kryan21.github.io/mezban-kolkata-biryani/assets/artwork.jpg","telephone":"+91-7425905548","servesCuisine":"Kolkata Biryani","priceRange":"₹55–₹240","acceptsReservations":false}
+{"@context":"https://schema.org","@type":"Restaurant","name":"Mezban Kolkata Biryani","slogan":"The Authentic Taste of Kolkata","url":"https://kryan21.github.io/mezban-kolkata-biryani/","image":"https://kryan21.github.io/mezban-kolkata-biryani/assets/artwork.jpg","telephone":"+91-7425905548","servesCuisine":"Kolkata Biryani","priceRange":"₹55–₹240","acceptsReservations":false,"address":{"@type":"PostalAddress","streetAddress":"O.P. Complex","addressLocality":"Patna","addressRegion":"Bihar","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":25.6366488,"longitude":85.1079135},"hasMap":"https://www.google.com/maps/search/?api=1&query=25.636648815533082,85.10791352331533"}
 </script>
 <style>
 :root{
@@ -164,7 +164,7 @@ nav.main a:hover{color:var(--cream)}nav.main a:hover::after{width:100%}
       <span class="l-name">MEZ<b>BAN</b><span class="l-sub">KOLKATA BIRYANI</span></span>
     </a>
     <nav class="main" aria-label="Main navigation">
-      <a href="#story">Story</a><a href="#signatures">Signatures</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
+      <a href="#menu">Menu</a><a href="#signatures">Signatures</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a><a href="#story">Story</a>
     </nav>
     <a class="btn btn-gold hd-call" href="tel:+917425905548" style="margin-left:auto" aria-label="Call Mezban Kolkata Biryani">Call 74259 05548</a>
   </div>
@@ -183,6 +183,7 @@ nav.main a:hover{color:var(--cream)}nav.main a:hover::after{width:100%}
         <a class="btn btn-ghost" href="#menu">View Menu</a>
         <a class="hero-call-link" href="tel:+917425905548">Call 74259 05548</a>
       </div>
+      <div class="deliv-pill">Free delivery within 2 km — just call or WhatsApp your order</div>
       <div class="hero-meta">
         <div><b>₹55 – ₹240</b><span>Full menu range</span></div>
         <div><b>4 styles</b><span>Chicken · Mutton · Aloo · Egg</span></div>
@@ -204,6 +205,21 @@ nav.main a:hover{color:var(--cream)}nav.main a:hover::after{width:100%}
 
 <!-- MARQUEE -->
 <div class="marquee" aria-hidden="true"><div class="track" id="mqTrack"></div></div>
+
+<!-- MENU + ORDER BUILDER -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">The Menu</span><h2>Pick your <em>handi</em></h2><p>Tap + to build your order — we'll send it straight to our WhatsApp, ready to confirm. Half or full, every biryani comes dum-fresh — and delivery is <b style="color:var(--gold2)">free within 2 km</b>.</p><div class="gold-rule"></div></div>
+    <div class="tabs" id="menuTabs" role="tablist" aria-label="Menu categories"></div>
+    <div class="menu-list" id="menuList"></div>
+    <div class="order-bar" id="orderBar">
+      <div class="o-sum"><b id="orderTotal">₹0</b><span id="orderCount">Your handi is empty — add something tasty.</span></div>
+      <button class="btn btn-ghost" id="clearOrder" type="button" style="padding:.65rem 1.2rem;font-size:.82rem">Clear</button>
+      <a class="btn btn-wa disabled" id="waOrder" href="#" target="_blank" rel="noopener" aria-disabled="true">Order on WhatsApp</a>
+    </div>
+    <p class="deliv-note">Free delivery within 2 km of the shop — no delivery charge on call or WhatsApp orders.</p>
+  </div>
+</section>
 
 <style>
 /* ---------- story ---------- */
@@ -313,6 +329,17 @@ nav.main a:hover{color:var(--cream)}nav.main a:hover::after{width:100%}
 .rev-card .who span{display:block;font-size:.72rem;color:var(--faint)}
 @media(max-width:520px){.rev-card{width:280px}}
 
+/* ---------- delivery + shopfront + map ---------- */
+.deliv-pill{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.35rem;border:1px solid var(--gold);background:rgba(201,162,75,.1);color:var(--gold2);font-weight:800;font-size:.82rem;letter-spacing:.03em;padding:.55rem 1.1rem;border-radius:99px}
+.deliv-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold2);box-shadow:0 0 10px rgba(227,185,78,.9);flex-shrink:0}
+.deliv-note{text-align:center;color:var(--gold2);font-size:.86rem;font-weight:700;margin-top:1.05rem}
+.shopfront{max-width:860px;margin:2.8rem auto 0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel);text-align:left}
+.shopfront img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.shopfront figcaption{padding:.85rem 1.15rem;font-size:.85rem;color:var(--muted)}
+.map-wrap{max-width:860px;margin:1.4rem auto 0;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.map-wrap iframe{width:100%;height:380px;border:0;display:block}
+@media(max-width:760px){.map-wrap iframe{height:300px}.shopfront{margin-top:2.2rem}}
+
 /* ---------- visit ---------- */
 #visit{background:radial-gradient(800px 460px at 50% 110%,rgba(232,134,46,.13),transparent 65%),var(--bg);text-align:center}
 #visit h2{font-size:clamp(2.4rem,6.5vw,4.4rem)}
@@ -367,23 +394,7 @@ section{padding:3.8rem 0}
 }
 </style>
 
-<!-- STORY -->
-<section id="story">
-  <div class="wrap story-grid">
-    <div class="story-copy reveal">
-      <span class="eyebrow">Our Story</span>
-      <div class="sec-head" style="margin-bottom:1.4rem"><h2>From Lucknow's courts<br>to <em>Kolkata's heart</em></h2></div>
-      <p class="drop">Kolkata biryani was born in exile. When Nawab Wajid Ali Shah, the last Nawab of Awadh, came to Kolkata, his khansamas brought Lucknow's dum pukht with them — biryani sealed in a handi and slow-cooked in its own steam, fragrant rather than fiery.</p>
-      <p>In Kolkata, the biryani found its signature: <b>the golden aloo</b>. The potato soaked up the masalas and the meat's juices until it became, for many, the best bite in the handi — with a boiled egg keeping it company. Lighter, more delicate, unmistakably Kolkata.</p>
-      <p>At <b>Mezban</b>, we keep it exactly that way. Long-grain rice layered over marinated chicken and mutton, sealed and rested on dum — never heavy with spice, always fragrant to the last grain.</p>
-      <div class="story-facts"><span>Dum Pukht, sealed handi</span><span>Signature aloo + egg</span><span>Light &amp; fragrant</span></div>
-    </div>
-    <div class="story-media">
-      <figure class="frame-card art-card reveal"><img src="assets/artwork.jpg" alt="Mezban Kolkata Biryani's own gold poster artwork — a brass handi with the words The Authentic Taste of Kolkata" loading="eager"><figcaption><span>Our own artwork, from the day we opened our doors.</span><b>Est. artwork</b></figcaption></figure>
-      <figure class="frame-card sign-card reveal"><img src="assets/dum-handi.jpg" alt="Steam rising as a sealed biryani handi is opened at Mezban" loading="eager"><figcaption><span>Sealed, steamed — then the reveal.</span><b>Dum Pukht</b></figcaption></figure>
-    </div>
-  </div>
-</section>
+
 
 <!-- SIGNATURES -->
 <section id="signatures">
@@ -423,19 +434,7 @@ section{padding:3.8rem 0}
   </div>
 </section>
 
-<!-- MENU + ORDER BUILDER -->
-<section id="menu">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">The Menu</span><h2>Pick your <em>handi</em></h2><p>Tap + to build your order — we'll send it straight to our WhatsApp, ready to confirm. Half or full, every biryani comes dum-fresh.</p><div class="gold-rule"></div></div>
-    <div class="tabs" id="menuTabs" role="tablist" aria-label="Menu categories"></div>
-    <div class="menu-list" id="menuList"></div>
-    <div class="order-bar" id="orderBar">
-      <div class="o-sum"><b id="orderTotal">₹0</b><span id="orderCount">Your handi is empty — add something tasty.</span></div>
-      <button class="btn btn-ghost" id="clearOrder" type="button" style="padding:.65rem 1.2rem;font-size:.82rem">Clear</button>
-      <a class="btn btn-wa disabled" id="waOrder" href="#" target="_blank" rel="noopener" aria-disabled="true">Order on WhatsApp</a>
-    </div>
-  </div>
-</section>
+
 
 <!-- GALLERY -->
 <section id="gallery">
@@ -465,14 +464,31 @@ section{padding:3.8rem 0}
     <span class="eyebrow reveal">Visit &amp; Order</span>
     <h2 class="reveal">Hungry? <em>The handi is on.</em></h2>
     <a class="big-call reveal" href="tel:+917425905548">74259 05548</a>
-    <p class="visit-note reveal">Visit us — address dropping soon. Call us and we'll guide you in. Or skip the queue: build your order above and send it on WhatsApp.</p>
+    <p class="visit-note reveal">Find us at <b style="color:var(--cream)">O.P. Complex, Patna</b> — look for the glowing red MEZBAN board. Or skip the trip: <b style="color:var(--gold2)">free delivery within 2 km</b> — call, or build your order and send it on WhatsApp.</p>
     <div class="reveal" style="display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap">
       <a class="btn btn-wa" href="https://wa.me/917425905548?text=Hello%20Mezban%20Kolkata%20Biryani!%20I%27d%20like%20to%20order." target="_blank" rel="noopener">WhatsApp Us</a>
       <a class="btn btn-ghost" href="#menu">Build My Order</a>
     </div>
-    <div class="visit-flex reveal">
-      <img class="menu-card-shot" src="assets/menu-card.jpg" alt="Mezban's printed menu card at the counter, with the full biryani menu and prices" loading="lazy">
-      <p style="color:var(--faint);font-size:.85rem;max-width:220px;text-align:left">Our menu card at the counter — same prices here, no surprises.</p>
+    <figure class="shopfront reveal"><img src="assets/shop-front.jpg" alt="Mezban Kolkata Biryani's shop front at O.P. Complex, Patna at night — the glowing red MEZBAN KOLKATA BIRYANI board above the counter, with the biryani handis in front" loading="lazy"><figcaption>Our shop at O.P. Complex — the red board is hard to miss.</figcaption></figure>
+    <div class="map-wrap reveal"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224.81528075724546!2d85.10791352331533!3d25.636648815533082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed590063fcd0f1%3A0x9ae961708c6aac7d!2sO.P.%20Complex!5e0!3m2!1sen!2sin!4v1793690120173!5m2!1sen!2sin" title="Map — Mezban Kolkata Biryani at O.P. Complex, Patna" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <div class="reveal" style="margin-top:1.4rem"><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=25.636648815533082,85.10791352331533" target="_blank" rel="noopener">Get Directions</a></div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="wrap story-grid">
+    <div class="story-copy reveal">
+      <span class="eyebrow">Our Story</span>
+      <div class="sec-head" style="margin-bottom:1.4rem"><h2>From Lucknow's courts<br>to <em>Kolkata's heart</em></h2></div>
+      <p class="drop">Kolkata biryani was born in exile. When Nawab Wajid Ali Shah, the last Nawab of Awadh, came to Kolkata, his khansamas brought Lucknow's dum pukht with them — biryani sealed in a handi and slow-cooked in its own steam, fragrant rather than fiery.</p>
+      <p>In Kolkata, the biryani found its signature: <b>the golden aloo</b>. The potato soaked up the masalas and the meat's juices until it became, for many, the best bite in the handi — with a boiled egg keeping it company. Lighter, more delicate, unmistakably Kolkata.</p>
+      <p>At <b>Mezban</b>, we keep it exactly that way. Long-grain rice layered over marinated chicken and mutton, sealed and rested on dum — never heavy with spice, always fragrant to the last grain.</p>
+      <div class="story-facts"><span>Dum Pukht, sealed handi</span><span>Signature aloo + egg</span><span>Light &amp; fragrant</span></div>
+    </div>
+    <div class="story-media">
+      <figure class="frame-card art-card reveal"><img src="assets/artwork.jpg" alt="Mezban Kolkata Biryani's own gold poster artwork — a brass handi with the words The Authentic Taste of Kolkata" loading="eager"><figcaption><span>Our own artwork, from the day we opened our doors.</span><b>Est. artwork</b></figcaption></figure>
+      <figure class="frame-card sign-card reveal"><img src="assets/dum-handi.jpg" alt="Steam rising as a sealed biryani handi is opened at Mezban" loading="eager"><figcaption><span>Sealed, steamed — then the reveal.</span><b>Dum Pukht</b></figcaption></figure>
     </div>
   </div>
 </section>
@@ -485,7 +501,7 @@ section{padding:3.8rem 0}
         <a class="logo" href="#home" style="margin-bottom:1rem"><svg viewBox="0 0 100 100" fill="none" width="40" height="40" aria-hidden="true"><circle cx="50" cy="50" r="47" stroke="#C9A24B" stroke-width="3"/><path d="M22 58a28 20 0 0 1 56 0Z" fill="#C9A24B"/><rect x="18" y="60" width="64" height="4" rx="2" fill="#E3B94E"/></svg><span class="l-name">MEZ<b>BAN</b><span class="l-sub">KOLKATA BIRYANI</span></span></a>
         <p>The Authentic Taste of Kolkata — dum pukht biryani, sealed slow and served fragrant.</p>
       </div>
-      <div><h4>Explore</h4><a href="#story">Our Story</a><a href="#signatures">Signatures</a><a href="#menu">Menu &amp; Order</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a></div>
+      <div><h4>Explore</h4><a href="#menu">Menu &amp; Order</a><a href="#signatures">Signatures</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#story">Our Story</a></div>
       <div><h4>Order</h4><a href="tel:+917425905548">Call 74259 05548</a><a href="https://wa.me/917425905548" target="_blank" rel="noopener">WhatsApp Order</a><a href="#visit">Visit Us</a></div>
       <div><h4>On the menu</h4><p>Chicken Biryani · ₹90–160</p><p>Mutton Biryani · ₹130–240</p><p>Aloo Biryani · ₹55–70</p><p>Egg Biryani · ₹65–80</p></div>
     </div>
@@ -529,7 +545,7 @@ section{padding:3.8rem 0}
 
 /* ============ MARQUEE ============ */
 (function(){
-  var items='CHICKEN BIRYANI ✦ MUTTON BIRYANI ✦ ALOO BIRYANI ✦ EGG BIRYANI ✦ DUM PUKHT ✦ THE AUTHENTIC TASTE OF KOLKATA ✦ ';
+  var items='CHICKEN BIRYANI ✦ MUTTON BIRYANI ✦ ALOO BIRYANI ✦ EGG BIRYANI ✦ DUM PUKHT ✦ FREE DELIVERY WITHIN 2 KM ✦ THE AUTHENTIC TASTE OF KOLKATA ✦ ';
   var half='<span>'+items+'</span>'; document.getElementById('mqTrack').innerHTML=half+half;
 })();
 
