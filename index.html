@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- MEZBAN-V7-2026-11-03 -->
+<!-- MEZBAN-V8-2026-11-03 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -310,6 +310,13 @@ nav.main a:hover{color:var(--cream)}nav.main a:hover::after{width:100%}
 .gal-item:hover figcaption{opacity:1;transform:none}
 .gal-wide{grid-column:span 2}
 .gal-tall{grid-row:span 2}
+.gal-menu{cursor:zoom-in}
+.gal-menu:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.lightbox{position:fixed;inset:0;z-index:1200;background:rgba(6,3,1,.94);display:none;align-items:center;justify-content:center;padding:1.2rem}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(94vw,560px);max-height:88vh;object-fit:contain;border-radius:14px;border:1px solid var(--line);box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+.lb-close{position:absolute;top:1rem;right:1.1rem;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:rgba(24,15,7,.9);color:var(--gold2);font-size:1.35rem;line-height:1;cursor:pointer;font-family:var(--sans)}
+.lb-hint{position:absolute;left:0;right:0;bottom:1.1rem;text-align:center;color:var(--muted);font-size:.82rem}
 @media(max-width:900px){.gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.gal-item figcaption{opacity:1;transform:none;font-size:.88rem}}
 
 /* ---------- reviews ---------- */
@@ -442,10 +449,10 @@ section{padding:3.8rem 0}
   <div class="gal-grid">
     <figure class="gal-item gal-wide reveal"><img src="assets/hero-biryani.jpg" alt="Special Chicken Biryani served in a brass handi" loading="lazy"><figcaption>Special Chicken, dum fresh</figcaption></figure>
     <figure class="gal-item reveal"><img src="assets/mutton-biryani.jpg" alt="Mutton Special Biryani with aloo and egg" loading="lazy"><figcaption>Mutton Special</figcaption></figure>
-    <figure class="gal-item gal-tall reveal"><img src="assets/artwork.jpg" alt="Mezban's gold poster artwork with a brass handi" loading="lazy"><figcaption>Our artwork</figcaption></figure>
+    <figure class="gal-item gal-tall gal-menu reveal" id="galMenu" role="button" tabindex="0" aria-label="Open the menu card photo full screen" title="Tap to view the menu card"><img src="assets/menu-card.jpg" alt="Mezban's printed menu card with the full biryani menu and prices" loading="lazy"><figcaption>Our menu card — tap to read</figcaption></figure>
     <figure class="gal-item reveal"><img src="assets/dum-handi.jpg" alt="Steam rising as a biryani handi is opened" loading="lazy"><figcaption>The dum moment</figcaption></figure>
     <figure class="gal-item reveal"><img src="assets/aloo-egg-biryani.jpg" alt="Aloo and egg biryani, the Kolkata way" loading="lazy"><figcaption>Aloo &amp; Egg — the Kolkata way</figcaption></figure>
-    <figure class="gal-item gal-wide reveal"><img src="assets/menu-card.jpg" alt="Mezban's printed menu card with the full biryani menu and prices" loading="lazy"><figcaption>Our menu card — honest prices</figcaption></figure>
+    <figure class="gal-item gal-wide reveal"><img src="assets/shop-front.jpg" alt="Mezban Kolkata Biryani's shop front at O.P. Complex, Patna at night, with the glowing red signboard" loading="lazy"><figcaption>Find us at O.P. Complex</figcaption></figure>
   </div>
 </section>
 
@@ -716,6 +723,24 @@ renderTabs(); renderMenu(); updateOrder();
 </script>
 <script>
 document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&!t.dataset.r2){t.dataset.r2='1';var s=t.getAttribute('src');if(s){t.src=s+(s.indexOf('?')>-1?'&':'?')+'r2=1';}}},true);
+</script>
+<!-- LIGHTBOX (menu card only) -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Mezban menu card, full view">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close menu card view">&times;</button>
+  <img src="assets/menu-card.jpg" alt="Mezban Kolkata Biryani's printed menu card — full menu with prices: Chicken Biryani, Mutton Biryani, Aloo Biryani, Egg Biryani and extras">
+  <div class="lb-hint">Our menu card — same prices at the counter. Tap anywhere to close.</div>
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'), g=document.getElementById('galMenu');
+  if(!lb||!g) return;
+  function openLb(){ lb.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  g.addEventListener('click', openLb);
+  g.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openLb(); } });
+  lb.addEventListener('click', closeLb);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+})();
 </script>
 </body>
 </html>
